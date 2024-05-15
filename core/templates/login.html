@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Вход и регистрация</li>
+                    </ol>
+                </div>
+            </nav>
+
+            <div class="page-header">
+                <div class="container">
+                    <h1>Вход и регистрация</h1>
+                </div><!-- End .container -->
+            </div><!-- End .page-header -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+
+ {% if user.is_authenticated %}
+                            <h3>Вы вошли как: <a href="/my_account">{{ user.username }}</a> / <a href="/logout">Выйти</a></h3>
+
+                        {% else %}
+     <div class="heading">
+                            <h2 class="title">ВХОД</h2>
+                            <p>Если у вас есть логин и пароль то можете войти.</p>
+                        </div><!-- End .heading -->
+                            <form action='.' method='post'>
+                            {% csrf_token %}
+                            <input type="email" class="form-control" placeholder="Email адрес" name="username" value="" id="username" required>
+                            <input type="password" class="form-control" placeholder="Введите пароль" name="password" value="" id="password" required>
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary" name="login">ВОЙТИ</button>
+
+                            </div><!-- End .form-footer -->
+                        </form>
+                        {% endif %}
+
+                    </div><!-- End .col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="heading">
+                            <h2 class="title">Регистрация нового пользователя</h2>
+                            <p>Зарегистрируйте нового пользователя что бы арендовать машину и добавлять свои машины.</p>
+                        </div><!-- End .heading -->
+
+                       <form action='.' method='post'>
+                            {% csrf_token %}
+
+<input type="email" class="form-control" placeholder="Email адрес" name="email" value="" required id="id_email">
+                            <input type="password" class="form-control" placeholder="Введите пароль" name="password1" required id="id_password1">
+<input type="password" class="form-control" placeholder="Подтвердите пароль" name="password2" required id="id_password2">
+<input class="form-control" type="text" placeholder="Ваш логин" name="username" required maxlength="30" id="id_username">
+    <h2 class="title mb-2">Дополнительная информация</h2>
+
+                            <input type="text" class="form-control" placeholder="Имя" name="first_name" maxlength="30" id="id_first_name">
+                            <input type="text" class="form-control" placeholder="Фамилия" name="last_name" maxlength="30" id="id_last_name">
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary" name="register">Регистрация</button>
+
+                            </div><!-- End .form-footer -->
+      </form>
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </main><!-- End .main -->
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Login</li>
+                    </ol>
+                </div>
+            </nav>
+
+            <div class="page-header">
+                <div class="container">
+                    <h1>Login and Create Account</h1>
+                </div><!-- End .container -->
+            </div><!-- End .page-header -->
+
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2 class="title">Регистрация нового пользователя</h2>
+                            <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                        </div><!-- End .heading -->
+<form method="post">
+    {% csrf_token %}
+
+<input type="email" class="form-control" placeholder="Email адрес" name="email" value="" required id="id_email">
+                            <input type="password" class="form-control" placeholder="Password" name="password1" required id="id_password1">
+<input type="password" class="form-control" placeholder="Password" name="password2" required id="id_password2">
+<input class="form-control" type="text" placeholder="Ваш логин" name="username" required maxlength="30" id="id_username">
+    <h2 class="title mb-2">Дополнительная информация</h2>
+
+                            <input type="text" class="form-control" placeholder="Имя" name="first_name" maxlength="30" id="id_first_name">
+                            <input type="text" class="form-control" placeholder="Фамилия" name="last_name" maxlength="30" id="id_last_name">
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary">ВОЙТИ</button>
+                                <a href="#" class="forget-pass"> Забыли пароль?</a>
+                            </div><!-- End .form-footer -->
+      </form>
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </main><!-- End .main -->
+
+       {% endblock %}

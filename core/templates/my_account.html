@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Мой кабинет</li>
+                    </ol>
+                </div>
+            </nav>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 order-lg-last dashboard-content">
+                        <h2>Изменение пароля</h2>
+
+                        {% if messages %}
+                            <div class="alert alert-success alert-intro" role="alert">
+
+
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+                            </div><!-- End .alert -->
+{% endif %}
+                        <form action='.' method='post'>
+                            {% csrf_token %}
+
+                            <div class="col-md-6">
+                            <div class="form-group required-field">
+                                <label for="acc-password">Старый пароль</label>
+                                <input type="password" class="form-control" name="old_password" autofocus id="id_old_password" required>
+                            </div><!-- End .form-group -->
+                                </div>
+<div>
+                                <h3 class="mb-2">Новый пароль</h3>
+                                <div class="row">
+                                    <br><span class="helptext">
+                                    <ul>
+                                    <li>Ваш пароль не должен совпадать с вашим именем или другой персональной информацией или быть слишком похожим на неё.</li>
+                                    <li>Ваш пароль должен содержать как минимум 8 символов.</li>
+                                    <li>Ваш пароль не может быть одним из широко распространённых паролей.</li>
+                                    <li>Ваш пароль не может состоять только из цифр.</li>
+                                </ul>
+                                </span>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group required-field">
+                                            <label for="acc-pass2">Новый пароль</label>
+                                            <input type="password" class="form-control" name="new_password1" id="id_new_password1" required>
+                                        </div><!-- End .form-group -->
+                                    </div><!-- End .col-md-6 -->
+
+                                    <div class="col-md-6">
+                                        <div class="form-group required-field">
+                                            <label for="acc-pass3">Подтверждение пароля</label>
+                                            <input type="password" class="form-control" name="new_password2" id="id_new_password2" required>
+                                        </div><!-- End .form-group -->
+                                    </div><!-- End .col-md-6 -->
+                                </div><!-- End .row -->
+                            </div><!-- End #account-chage-pass -->
+
+                            <div class="form-footer">
+
+                                <div class="form-footer-right">
+                                    <button type="submit" class="btn btn-primary" name="ch-pass">Сохранить</button>
+                                </div>
+                            </div><!-- End .form-footer -->
+                            </form>
+                        <div class="alert alert-success alert-intro" role="alert">
+                            Ваш токе для подключения по API: <b>{{ formm }}</b>
+                        </div><!-- End .alert -->
+<h2>Изменение информации</h2>
+                         <form action='.' method='post'>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group required-field">
+                                                <label for="acc-name">Login</label>
+                                                <input type="text" class="form-control" value="{{ user.username }}" disabled name="username" required maxlength="30" id="id_username">
+                                            </div><!-- End .form-group -->
+                                        </div><!-- End .col-md-4 -->
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Имя</label>
+                                                <input type="text" class="form-control" value="{{ user.first_name }}" name="first_name" maxlength="30" id="id_first_name">
+                                            </div><!-- End .form-group -->
+                                        </div><!-- End .col-md-4 -->
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="acc-lastname">Фамилия</label>
+                                                <input type="text" class="form-control" value="{{ user.last_name }}" name="last_name" maxlength="30" id="id_last_name">
+                                            </div><!-- End .form-group -->
+                                        </div><!-- End .col-md-4 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .col-sm-11 -->
+                            </div><!-- End .row -->
+
+                            <div class="form-group required-field">
+                                <label for="acc-email">Email</label>
+                                <input type="email" class="form-control" value="{{ user.email }}" disabled name="email" required id="id_email">
+                            </div><!-- End .form-group -->
+
+                            <div class="form-footer">
+
+                                <div class="form-footer-right">
+                                    <button type="submit" class="btn btn-primary" name="save">Сохранить</button>
+                                </div>
+                            </div><!-- End .form-footer -->
+                        </form>
+                    </div><!-- End .col-lg-9 -->
+
+                    <aside class="sidebar col-lg-3">
+                        <div class="widget widget-dashboard">
+                           <h3 class="widget-title">Мой кабинет</h3>
+
+                            <ul class="list">
+                                <li class="active"><a href="/my_account">Моя информация</a></li>
+                                <li><a href="/add_car">Добавить машину</a></li>
+
+                            </ul>
+                        </div><!-- End .widget -->
+                    </aside><!-- End .col-lg-3 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </main><!-- End .main -->
+
+      {% endblock %}

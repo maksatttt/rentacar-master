@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Аренда машины</li>
+                    </ol>
+                </div>
+            </nav>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 order-lg-last dashboard-content">
+                        <h2>Арендовать машину</h2>
+
+                        <div class="alert alert-success alert-intro" role="alert">
+                            Thank you for registering with Porto - Premium Template.
+                        </div><!-- End .alert -->
+
+                    <div class="col-md-6">
+
+
+     <div class="heading">
+                            <h2 class="title">Форма аренды автомобиля</h2>
+
+                        </div><!-- End .heading -->
+                        <p>Название: {{ Car_item.name_car_en }}</p>
+                                <img src="/media/{{ Car_item.foto }}">
+                                <p>Год выпуска: {{ Car_item.born_year }}</p>
+                            <form action='.' method='post'>
+                            {% csrf_token %}
+
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary" name="add_rent">Начать аренду</button>
+
+                            </div><!-- End .form-footer -->
+                        </form>
+
+
+                    </div><!-- End .col-md-6 -->
+                    </div><!-- End .col-lg-9 -->
+
+                    <aside class="sidebar col-lg-3">
+                        <div class="widget widget-dashboard">
+                            <h3 class="widget-title">Мой кабинет</h3>
+
+                            <ul class="list">
+                                <li class="active"><a href="#">Добавление машины</a></li>
+
+                            </ul>
+                        </div><!-- End .widget -->
+                    </aside><!-- End .col-lg-3 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </main><!-- End .main -->
+
+       {% endblock %}

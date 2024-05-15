@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                </div>
+            </nav>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 order-lg-last dashboard-content">
+                        <h2>Добавить машину</h2>
+
+
+
+                    <div class="col-md-6">
+
+
+     <div class="heading">
+                            <h2 class="title">Форма добавления автомобиля</h2>
+
+                        </div><!-- End .heading -->
+                            <form action='.' method='post' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" class="form-control" placeholder="Название автомобиля" name="name_car" value="" id="name_car" required>
+                            <input type="number" class="form-control" placeholder="Год выпуска" name="year_born" value="" id="year_born" required>
+                            <p><b>Фото автомобиля:</b><br>
+    <input class="form-control" type="file" name="foto" >
+        <p></p>
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary" name="add_car">Добавить</button>
+
+                            </div><!-- End .form-footer -->
+                        </form>
+
+
+                    </div><!-- End .col-md-6 -->
+                    </div><!-- End .col-lg-9 -->
+
+                    <aside class="sidebar col-lg-3">
+                        <div class="widget widget-dashboard">
+                            <h3 class="widget-title">Мой кабинет</h3>
+
+                            <ul class="list">
+                                <li><a href="/my_account">Моя информация</a></li>
+                                <li class="active"><a href="/add_car">Добавить машину</a></li>
+
+                            </ul>
+                        </div><!-- End .widget -->
+                    </aside><!-- End .col-lg-3 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </main><!-- End .main -->
+
+       {% endblock %}
